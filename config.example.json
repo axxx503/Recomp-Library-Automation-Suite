@@ -1,0 +1,26 @@
+{
+  "server": {
+    "host": "<SERVER_IP>",
+    "ssh_user": "<SERVER_USER>",
+    "storage_root": "/media/storage",
+    "smb_share_unc": "\\\\<SERVER_IP>\\<SHARE_NAME>",
+    "mapped_drive": "Z:\\"
+  },
+  "pc": {
+    "recomp_library_dir": "C:\\Recomp Library",
+    "local_nvidia_captures": "C:\\Users\\<USER>\\Videos\\NVIDIA",
+    "nvidia_offload_days": 15,
+    "min_dedup_size_mb": 5.0,
+    "keep_on_pc": [
+      "PC_Games",
+      "PS4",
+      "PS5",
+      "Nintendo_Switch_2"
+    ]
+  },
+  "steam": {
+    "steam_install_dir": "C:\\Program Files (x86)\\Steam",
+    "active_account_id": "<STEAM_ACCOUNT_ID>",
+    "collection_name": "Recomp Library"
+  }
+}

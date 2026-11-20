@@ -181,3 +181,18 @@ flowchart TD
 - **حسابات التواصل (Instagram / TikTok):** [https://bio.site/V7dt1](https://bio.site/V7dt1)
 - **البريد الإلكتروني (للاستفسارات والترخيص التجاري):** v7dtads@gmail.com
 - **دعم المشروع (Buy Me a Coffee):** [https://buymeacoffee.com/axxx503](https://buymeacoffee.com/axxx503)
+
+---
+
+## 🐍 سكربتات الأتمتة المرفقة (`scripts/`)
+
+جميع السكربتات التالية تعمل بمكتبات **Python 3.11+ القياسية فقط** (دون اعتماديات خارجية) وتدعم وضع `--dry-run` قبل `--execute`. انسخ [`config.example.json`](./config.example.json) واستبدل القيم الافتراضية (`<SERVER_IP>`, `<SHARE_NAME>`, `<USER>`, `<STEAM_ACCOUNT_ID>`) قبل التشغيل:
+
+| السكربت | البيئة المستهدفة | الوظيفة |
+| :--- | :--- | :--- |
+| [`scripts/server_organizer.py`](./scripts/server_organizer.py) | السيرفر (`/media/storage`) | تنظيم السيرفر بسياسة **صفر حذف** إلى هيكل 4 مجلدات لكل منصة (`keys/`, `texture/`, `saves/`, `games/`)، وتوحيد `NVIDIA_GeForce/`، وأرشفة التكرارات (`>= 5 MB`) في `Duplicates_Archive/` مع `.root_source.txt`. |
+| [`scripts/pc_to_server_migrator.py`](./scripts/pc_to_server_migrator.py) | الويندوز -> `Z:\` | ترحيل المنصات المتجهة للسيرفر والتحقق بـ `SHA-256` بنسبة 100% قبل حذف النسخ المحلية (مع استثناء ألعاب الـ PC و `PS4` و `PS5` و `Switch 2` بالكامل). |
+| [`scripts/nvidia_15day_archiver.py`](./scripts/nvidia_15day_archiver.py) | الويندوز -> `Z:\NVIDIA_GeForce` | أرشفة لقطات NVIDIA الأقدم من 15 يوماً مع فحص قفل الملف والتحقق بـ `SHA-256`. |
+| [`scripts/relink_phase4.py`](./scripts/relink_phase4.py) | الويندوز | إعادة ربط وصلات `C:\Recomp Library` وتحديث مسارات `yuzu` و `eden` و `PCSX2` و `Cemu` و `Dolphin` و `RetroArch` نحو `Z:\`. |
+| [`scripts/fix_steam_vdf.py`](./scripts/fix_steam_vdf.py) | Steam (`shortcuts.vdf`) | محلل VDF ثنائي آمن يحدّث مسارات `Exe`/`StartDir` المنتقلة مع الحفاظ التام على `appid` و `AppName` و `tags`. |
+| [`scripts/restore_recomp_collection.py`](./scripts/restore_recomp_collection.py) | Steam (`cloudstorage`) | استعادة مجموعة `Recomp Library` في القائمة الجانبية لـ Steam داخل `cloud-storage-namespace-1.json` و `.modified.json`. |

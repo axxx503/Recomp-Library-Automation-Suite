@@ -177,3 +177,18 @@ See the full bilingual license in [LICENSE.md](./LICENSE.md).
 - **Social Media (Instagram / TikTok):** [https://bio.site/V7dt1](https://bio.site/V7dt1)
 - **Email (Inquiries & Commercial Licensing):** v7dtads@gmail.com
 - **Support the Project (Buy Me a Coffee):** [https://buymeacoffee.com/axxx503](https://buymeacoffee.com/axxx503)
+
+---
+
+## 🐍 Included Python Automation Scripts (`scripts/`)
+
+All scripts below use **zero external dependencies** (Python 3.11+ standard library only) and support `--dry-run` by default before `--execute`. Copy [`config.example.json`](./config.example.json) and replace placeholders (`<SERVER_IP>`, `<SHARE_NAME>`, `<USER>`, `<STEAM_ACCOUNT_ID>`) before running:
+
+| Script | Target | Purpose |
+| :--- | :--- | :--- |
+| [`scripts/server_organizer.py`](./scripts/server_organizer.py) | Debian/CasaOS (`/media/storage`) | Zero-deletion server organizer: builds standardized 4-folder console layouts (`keys/`, `texture/`, `saves/`, `games/`), consolidates `NVIDIA_GeForce/`, and archives duplicates (`>= 5 MB`) into `Duplicates_Archive/` with `.root_source.txt`. |
+| [`scripts/pc_to_server_migrator.py`](./scripts/pc_to_server_migrator.py) | Windows PC -> `Z:\` | Migrates server-bound consoles (`PS3`, `PS2`, `PS1`, `PSP`, `PS_Vita`, `Switch 1`, `Wii`, `Wii U`, `3DS`, `DS`, `GBA`) with 100% `SHA-256` verification before deleting local copies (strictly excluding PC, `PS4`, `PS5`, and `Switch 2`). |
+| [`scripts/nvidia_15day_archiver.py`](./scripts/nvidia_15day_archiver.py) | Windows PC -> `Z:\NVIDIA_GeForce` | 15-day tiered ShadowPlay archiver with Windows file-lock detection and `SHA-256` verification before freeing local SSD space. |
+| [`scripts/relink_phase4.py`](./scripts/relink_phase4.py) | Windows PC | Relinks `C:\Recomp Library` symlinks and updates `yuzu`, `eden`, `PCSX2`, `Cemu`, `Dolphin`, and `RetroArch` configs to `Z:\`. |
+| [`scripts/fix_steam_vdf.py`](./scripts/fix_steam_vdf.py) | Steam (`shortcuts.vdf`) | Binary VDF parser/serializer that safely updates moved `Exe`/`StartDir` paths while preserving `appid`, `AppName`, and `Recomp Library` `tags`. |
+| [`scripts/restore_recomp_collection.py`](./scripts/restore_recomp_collection.py) | Steam (`cloudstorage`) | Restores the `Recomp Library` sidebar collection in `cloud-storage-namespace-1.json` and `.modified.json` for all tagged `appid`s. |
